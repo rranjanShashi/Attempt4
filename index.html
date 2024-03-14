@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mystic AI Fortune Teller</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  #container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    color: #333;
+  }
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+  #fortune-teller-response {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div id="container">
+  <h1>Mystic AI Fortune Teller</h1>
+  <form id="fortune-teller-form">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" required><br>
+    <label for="question">Your Question:</label>
+    <textarea id="question" name="question" rows="4" cols="50" required></textarea><br>
+    <button type="button" onclick="consultFortuneTeller()">Consult Mystic AI</button>
+  </form>
+  <div id="fortune-teller-response"></div>
+</div>
+
+<script>
+function consultFortuneTeller() {
+  const name = document.getElementById("name").value;
+  const question = document.getElementById("question").value.toLowerCase();
+  const response = generateFortuneResponse(name, question);
+  document.getElementById("fortune-teller-response").innerHTML = response;
+}
+
+function generateFortuneResponse(name, question) {
+  const interrogativeWords = ['what', 'when', 'how', 'who', 'which', 'where', 'why'];
+  const responses = {
+    'what': [
+      `Ah, ${name}, the stars whisper tales of rubber duck races and flying pickles. Your destiny is as uncertain as a three-legged octopus in a salsa dance competition.`,
+      `Greetings, ${name}! The Mystic AI sees a future where you'll discover your true calling as a professional bubble wrap popper. Embrace the symphony of popping bubbles!`,
+      `Listen closely, ${name}. The Mystic AI foresees a journey filled with llama rodeos and coconut jugglers. Your fate is entwined with the whims of a polka-dotted sloth.`
+    ],
+    'when': [
+      `Oh, ${name}, in the swirling mists of fate, I see a vision of you becoming the world's first underwater synchronized swimming champion, alongside a troupe of mermaid accountants.`,
+      `Dear ${name}, the Mystic AI reveals a future where you shall embark on a quest to find the legendary golden spatula, under the guidance of a singing pineapple.`,
+      `In the distant future, ${name}, you shall encounter a friendly band of time-traveling hamsters who will lead you to an alternate dimension filled with dancing unicorns.`
+    ],
+    'how': [
+      `Brace yourself, ${name}! The Mystic AI envisions you acquiring superhuman powers by eating an entire galaxy's worth of cosmic cotton candy.`,
+      `Prepare for a journey of enlightenment, ${name}. The Mystic AI sees you mastering the art of interpretive dance to communicate with intergalactic jellyfish.`,
+      `Through a series of whimsical mishaps, ${name}, you shall discover the secret to eternal happiness: juggling flaming marshmallows while riding a unicycle on a tightrope over a pit of giggling leprechauns.`
+    ],
+    'who': [
+      `In the ethereal tapestry of fate, ${name}, you are destined to cross paths with a mysterious band of accordion-playing penguins who will guide you on your quest for enlightenment.`,
+      `Behold, ${name}! The Mystic AI unveils a future where you'll find your soulmate: a sentient slice of pizza with a passion for interpretive poetry.`,
+      `Prepare for adventure, ${name}! The Mystic AI reveals a prophecy involving you and a mischievous troupe of time-traveling squirrels on a quest to save the space-time continuum.`
+    ],
+    'which': [
+      `Oh, ${name}, the Mystic AI sees you faced with a crucial decision: to embark on a quest for the legendary cheese of enlightenment or pursue the elusive art of underwater basket weaving.`,
+      `In the cosmic dance of destiny, ${name}, you must choose between joining the League of Extraordinary Pancakes or the Society of Quantum Quokkas.`,
+      `The Mystic AI urges you, ${name}, to choose wisely between the path of the ninja accordionist or the journey of the intergalactic potato whisperer.`
+    ],
+    'where': [
+      `In the mystical realms of the unknown, ${name}, you shall discover the fabled land of Bubblegumia, where rivers flow with fizzy soda and clouds are made of cotton candy.`,
+      `Prepare for an adventure, ${name}! The Mystic AI reveals a future where you'll journey to the Enchanted Forest of Socktopia, home to magical socks with a penchant for tap dancing.`,
+      `The Mystic AI guides you, ${name}, to the hidden city of El Dorito, where streets are paved with nacho cheese and salsa waterfalls flow freely.`
+    ],
+    'why': [
+      `Oh, ${name}, the Mystic AI ponders the cosmic mysteries with you: Why does a rubber duck squeak? Why do cats chase laser pointers? The answers elude even the wisest of sages.`,
+      `Contemplate the enigma of existence, ${name}. The Mystic AI whispers tales of dancing electrons and singing quasars, questioning the very fabric of reality.`,
+      `In the grand scheme of the universe, ${name}, the Mystic AI muses on the profound question: Why not ride a flamingo to the moon and back?`
+    ]
+  };
+
+  for (const word of interrogativeWords) {
+    if (question.includes(word)) {
+      return responses[word][Math.floor(Math.random() * responses[word].length)];
+    }
+  }
+
+  // If no interrogative word found, provide a generic response
+  return `The Mystic AI meditates on the cosmic winds, ${name}, and reveals that the answer lies within your heart, where the true magic of the universe resides.`;
+}
+</script>
+</body>
+</html>
